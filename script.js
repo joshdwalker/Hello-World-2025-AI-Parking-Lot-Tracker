@@ -14,12 +14,15 @@ const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 // Example data structure for each lot:
 // { id, name, totalSpaces, freeSpaces, status: 'open'|'limited'|'closed', lastUpdated: ISOString, meta:{zone:'A', notes:'...'} }
 const sampleData = [
-  { id: 'lot-a', name: 'Gordon Lot', totalSpaces: 400, freeSpaces: 162, status: 'open', lastUpdated: new Date().toISOString() },
-  { id: 'lot-b', name: 'Hanna Garage', totalSpaces: 1200, freeSpaces: 24, status: 'limited', lastUpdated: new Date().toISOString() },
-  { id: 'lot-c', name: 'Pay Lot East', totalSpaces: 200, freeSpaces: 0, status: 'closed', lastUpdated: new Date().toISOString() },
-  { id: 'lot-d', name: 'Wiley Street', totalSpaces: 85, freeSpaces: 34, status: 'open', lastUpdated: new Date().toISOString() },
-  { id: 'lot-e', name: 'Engineering Deck', totalSpaces: 520, freeSpaces: 408, status: 'open', lastUpdated: new Date().toISOString() },
-  { id: 'lot-f', name: 'North Visitor', totalSpaces: 60, freeSpaces: 6, status: 'limited', lastUpdated: new Date().toISOString() }
+  {id: 'lot-01', name: 'Asian American Resource and Cultural Center', abbreviation: 'AACC', totalSpaces: 100, freeSpaces: 50, status: 'open', lastUpdated: new Date().toISOString()},
+  {id: 'lot-02', name: 'Agricultural and Biological Engineering', abbreviation: 'ABE', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
+  {id: 'lot-03', name: 'Aspire At Discovery Park Bldg A', abbreviation: 'ADPA', totalSpaces: 150, freeSpaces: 10, status: 'limited', lastUpdated: new Date().toISOString()},
+  {id: 'lot-04', name: 'Aspire At Discovery Park Bldg B', abbreviation: 'ADPB', totalSpaces: 300, freeSpaces: 250, status: 'open', lastUpdated: new Date().toISOString()},
+  {id: 'lot-05', name: 'Agricultural Administration Building', abbreviation: 'AGAD', totalSpaces: 200, freeSpaces: 0, status: 'closed', lastUpdated: new Date().toISOString()},
+  {id: 'lot-06', name: 'Boilermaker Aquatic Center', abbreviation: 'AQUA', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
+  {id: 'lot-07', name: 'Armory', abbreviation: 'AR', totalSpaces: 100, freeSpaces: 50, status: 'open', lastUpdated: new Date().toISOString()},
+  {id: 'lot-08', name: 'Neil Armstrong Hall Of Engineering', abbreviation: 'ARMS', totalSpaces: 200, freeSpaces: 0, status: 'closed', lastUpdated: new Date().toISOString()}
+  // Add more lots
 ];
 
 // ----------------------
@@ -71,7 +74,7 @@ function makeLotCard(lot) {
   card.setAttribute('role', 'listitem');
   card.setAttribute('aria-label', `${lot.name}: ${freeText} free of ${lot.totalSpaces}`);
   card.innerHTML = `
-    <div class="lot-thumb" aria-hidden="true">${lot.name.split(' ').slice(0,2).map(s => s[0]).join('').toUpperCase()}</div>
+    <div class="lot-thumb" aria-hidden="true">${lot.abbreviation}</div>
     <div class="lot-info">
       <p class="lot-name">${escapeHtml(lot.name)}</p>
       <p class="lot-sub">${lot.totalSpaces} total · status: <strong style="text-transform:capitalize">${lot.status}</strong></p>
