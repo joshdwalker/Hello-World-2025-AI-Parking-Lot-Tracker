@@ -16,7 +16,7 @@
 }
 
 /* Page layout */
-html,body{height:100%}
+html,body{height:auto}
 body{
   margin:0;
   background: linear-gradient(180deg,var(--bg) 0%, #071025 100%);
@@ -24,7 +24,6 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   display:flex;
-  align-items:center;
   justify-content:center;
   padding:28px;
   box-sizing:border-box;
@@ -48,6 +47,14 @@ header.app-header{
   justify-content:space-between;
   margin-bottom:18px;
 }
+.app-header {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg,var(--bg) 0%, #071025 100%);
+  z-index: 10;
+  padding: 12px 0;
+}
+
 .brand{
   display:flex;
   gap:12px;
@@ -165,7 +172,7 @@ button.ghost{
   background:linear-gradient(180deg,#c4bfc0,#9d9795);
 }
 .lot-info{ flex:1 1 auto; min-width:0; }
-.lot-name{ font-weight:700; margin:0 0 6px 0; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.lot-name{ font-weight:700; margin:0 0 6px 0; font-size:15px; white-space:normal; word-break:break-word; overflow:hidden; text-overflow:ellipsis; }
 .lot-sub{ margin:0; color:var(--muted); font-size:13px; }
 
 .lot-stats{
