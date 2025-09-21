@@ -33,7 +33,6 @@ const sampleData = [
 // ----------------------
 async function fetchParkingData() {
   carsAmount = await carsInImage(sampleImage64);
-  console.log(carsAmount);
   for (i in sampleData) {
     sampleData[i].freeSpaces = sampleData[i].totalSpaces - carsAmount;
   }
