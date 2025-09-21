@@ -1,4 +1,3 @@
-
 /******************************
  * Parking Dashboard Frontend
  * - Replace mock fetch with real endpoint
@@ -14,28 +13,16 @@ const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 // Example data structure for each lot:
 // { id, name, totalSpaces, freeSpaces, status: 'open'|'limited'|'closed', lastUpdated: ISOString, meta:{zone:'A', notes:'...'} }
 const sampleData = [
-  {id: 'lot-01', name: 'Asian American Resource and Cultural Center', abbreviation: 'AACC', totalSpaces: 100, freeSpaces: 50, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-02', name: 'Agricultural and Biological Engineering', abbreviation: 'ABE', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-03', name: 'Aspire At Discovery Park Bldg A', abbreviation: 'ADPA', totalSpaces: 150, freeSpaces: 10, status: 'limited', lastUpdated: new Date().toISOString()},
-  {id: 'lot-04', name: 'Aspire At Discovery Park Bldg B', abbreviation: 'ADPB', totalSpaces: 300, freeSpaces: 250, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-05', name: 'Agricultural Administration Building', abbreviation: 'AGAD', totalSpaces: 200, freeSpaces: 0, status: 'closed', lastUpdated: new Date().toISOString()},
-  {id: 'lot-06', name: 'Boilermaker Aquatic Center', abbreviation: 'AQUA', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-07', name: 'Armory', abbreviation: 'AR', totalSpaces: 100, freeSpaces: 50, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-08', name: 'Neil Armstrong Hall of Engineering', abbreviation: 'ARMS', totalSpaces: 200, freeSpaces: 0, status: 'closed', lastUpdated: new Date().toISOString()},
-  {id: 'lot-09', name: 'Black Culturual Center', abbreviation: 'BCC', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-10', name: 'Biochemistry Building', abbreviation: 'BCHM', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-11', name: 'Bindley Bioscience Center', abbreviation: 'BIND', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-12', name: 'Steven C. Beering Hall of Liberal Arts & Education', abbreviation: 'BRNG', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-13', name: 'Hebert C. Brown Laboratory of Chemistry', abbreviation: 'BRWN', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-14', name: 'Chaney-Hale Hall of Science', abbreviation: 'CHAS', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-15', name: 'Class of 1950 Lecture Hall', abbreviation: 'Cl50', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-16', name: 'Cordova Recreational Sports Center', abbreviation: 'CREC', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-17', name: 'Edward C. Elliott Hall of Music', abbreviation: 'ELLT', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-18', name: 'Fred and Mary Ford Dining Court', abbreviation: 'FORD', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-13', name: 'Forny Hall of  Chemical Engineering', abbreviation: 'FRNY', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-13', name: 'Grissom Hall', abbreviation: 'GRIS', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-13', name: 'Felix Haas Hall', abbreviation: 'HAAS', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()},
-  {id: 'lot-13', name: '', abbreviation: '', totalSpaces: 200, freeSpaces: 150, status: 'open', lastUpdated: new Date().toISOString()}
+  {id: 'lot-01', name: 'Stadium R lot', abbreviation: 'RLOT', totalSpaces: 200, freeSpaces: 20, status: 'open', permit: 'A, B, or C', lastUpdated: new Date().toISOString()},
+  {id: 'lot-02', name: 'Mollenkopf Athletic Center', abbreviation: 'MOLL', totalSpaces: 75, freeSpaces: 70, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()},
+  {id: 'lot-03', name: 'Owen', abbreviation: 'OWEN', totalSpaces: 25, freeSpaces: 18, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()},
+  {id: 'lot-04', name: 'Ford', abbreviation: 'FORD', totalSpaces: 15, freeSpaces: 8, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()},,
+  {id: 'lot-05', name: 'Cary', abbreviation: 'CARY', totalSpaces: 20, freeSpaces: 8, status: 'open', permit: 'Residence', lastUpdated: new Date().toISOString()},,
+  {id: 'lot-06', name: 'Cordova Recreational Sports Center', abbreviation: 'CREC', totalSpaces: 100, freeSpaces: 20, status: 'open', permit: 'A, B, or C', lastUpdated: new Date().toISOString()},,
+  {id: 'lot-07', name: 'Wiley/Tarkington', abbreviation: 'WILY', totalSpaces: 25, freeSpaces: 18, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()},,
+  {id: 'lot-08', name: 'N Russel & 6th', abbreviation: 'R&6', totalSpaces: 50, freeSpaces: 40, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()},,
+  {id: 'lot-09', name: 'N Waldron & 6th', abbreviation: 'W&6', totalSpaces: 25, freeSpaces: 10, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()},,
+  {id: 'lot-10', name: "Hillenbrand", abbreviation: 'HILL', totalSpaces: 30, freeSpaces: 20, status: 'open', permit: 'A or B', lastUpdated: new Date().toISOString()}
   // Add more lots
 ];
 
