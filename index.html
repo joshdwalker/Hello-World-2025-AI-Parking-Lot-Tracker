@@ -23,16 +23,17 @@
       <div class="controls" role="region" aria-label="controls">
         <div class="control" title="Search by lot name">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.5" /></svg>
-          <input id="search" type="text" placeholder="Search lots (e.g., 'Gordon')" aria-label="search lots">
+          <input id="search" type="text" placeholder="Search lots (e.g., 'Wiley')" aria-label="search lots">
         </div>
 
         <div class="control" title="Filter by status">
           <label for="filter" class="small muted" style="display:none">Filter</label>
           <select id="filter" aria-label="Filter lots">
             <option value="all">All lots</option>
-            <option value="open">Open only</option>
-            <option value="limited">Limited</option>
-            <option value="closed">Closed</option>
+            <option value="a">A permits only</option>
+            <option value="ab">A or B permits only</option>
+            <option value="abc">A, B, or C permits</option>
+            <option value="res">Residence Halls permits only</option>
           </select>
         </div>
 
@@ -61,7 +62,7 @@
 
     <section class="meta" aria-live="polite">
       <div class="left">
-        <span id="statusText" class="muted">Ready — showing sample data.</span>
+        <span id="statusText" class="muted">Ready — showing lot data.</span>
       </div>
       <div class="right small">
         <span id="lastUpdated">Last refreshed: —</span>
@@ -87,8 +88,7 @@
     </section>
 
     <footer>
-      <div class="small muted">Built for Hello World Hackathon — front-end scaffold</div>
-      <div class="small muted">Tip: replace the mock fetch in <code>fetchParkingData()</code> with your API call.</div>
+      <div class="small muted">Josh, Ayaan, Ish, Allison</div>
     </footer>
   </main>
 
