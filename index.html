@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Purdue Hello World — Parking Availability Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <meta name="description" content="Parking availability at Purdue's campus. Shows free parking spaces per lot."/>
   <style>
   </style>
@@ -57,7 +57,24 @@
           </label>
           <input id="interval" type="number" min="5" value="30" aria-label="Refresh interval (seconds)" title="seconds" style="width:54px" />s
         </div>
+        
+        <div class="control">
+          <div class="container">
+            <label for="imageUpload" class="upload-box">
+              <span>Click to upload a parking lot image</span>
+              <input type="file" id="imageUpload" accept="image/*">
+            </label>
+          </div>
+        </div>
       </div>
+
+      <!-- Preview of uploaded image -->
+      <div class="preview">
+        <img id="previewImage" alt="Uploaded preview will appear here">
+      </div>
+
+      <!-- Results -->
+      <div id="results"></div>
     </header>
 
     <section class="meta" aria-live="polite">
@@ -71,6 +88,7 @@
 
     <section id="lotsContainer" aria-label="Parking lots">
       <div id="lotsGrid" class="grid" role="list">
+        
         <!-- dynamically generated lot cards -->
       </div>
 
