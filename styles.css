@@ -62,7 +62,9 @@ header.app-header{
 }
 .logo {
   width:56px;
-  height:56px;
+  height:56px;        /* keep proportions */
+  flex-shrink: 0;      /* don’t let flexbox squish it */
+  object-fit: contain;
   border-radius:10px;
   display:grid;
   place-items:center;
@@ -78,13 +80,83 @@ header.app-header{
 .title h1{margin:0;font-size:18px}
 .title p{margin:0;font-size:13px;color:var(--muted)}
 
-/* controls */
-.controls{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex-wrap:wrap;
+.container {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 100%;
 }
+
+/* Preview image */
+.preview {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.preview img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: none;
+}
+/* controls */
+.controls {
+  position: sticky;      
+  top: 0;
+  display: flex;
+  flex-direction: row;   
+  flex-wrap: wrap;       /* allow items to wrap to the next line */
+  align-items: center;   
+  gap: 15px;             
+  padding: 10px 20px;
+  background: --bg;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  z-index: 1000;
+}
+
+/* Upload box base */
+.controls .upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #888;
+  border-radius: 8px;
+  padding: 8px 15px;
+  color: #555;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  line-height: 1;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.controls .upload-box:hover {
+  border-color: #333;
+}
+
+.controls .upload-box input {
+  display: none;
+}
+
+/* Responsive: shrink upload box on small screens */
+@media (max-width: 600px) {
+  .controls .upload-box span {
+    display: none;     /* hide text */
+  }
+  .controls .upload-box::before {
+    content: "📁";     /* show folder icon */
+    font-size: 1.2rem;
+  }
+  .controls .upload-box {
+    padding: 8px 12px; /* make it more compact */
+    border-radius: 6px;
+  }
+}
+
 .control {
   background:var(--glass);
   padding:8px;
@@ -182,6 +254,7 @@ button.ghost{
   align-items:flex-end;
   min-width:110px;
 }
+
 .count{
   font-weight:800;
   font-size:18px;
